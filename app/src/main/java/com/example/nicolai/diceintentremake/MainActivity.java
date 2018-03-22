@@ -69,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNext() {
+        String move = History1.getText().toString();
         Intent intent = new Intent();
         intent.setClass(this, History.class);
+        intent.putExtra("Dice", move);
         startActivity(intent);
     }
 
@@ -86,28 +88,5 @@ public class MainActivity extends AppCompatActivity {
         holdPicked = PickedImage;
         randomDice();
         dice2.setImageResource(images[PickedImage]);
-        updateHistory();
-    }
-
-    private void updateHistory()
-    {
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-        String formattedDate = df.format(c.getTime());
-        History5.setText(History4.getText());
-        History4.setText(History3.getText());
-        History3.setText(History2.getText());
-        History2.setText(History1.getText());
-        History1.setText((holdPicked + 1) + " + " + (1 + PickedImage) + " = " + (holdPicked + 1 + 1 + PickedImage + " " + formattedDate ));
-        //m_dice.die.add(new BEDiceHistory(History1.getText().toString()));
-    }
-
-    private void clearHistory()
-    {
-        History1.setText("");
-        History2.setText("");
-        History3.setText("");
-        History4.setText("");
-        History5.setText("");
     }
 }

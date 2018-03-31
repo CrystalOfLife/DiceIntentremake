@@ -70,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNext() {
         String move = History1.getText().toString();
-        Intent intent = new Intent();
+        Intent intent = new Intent(MainActivity.this, History.class);
         intent.setClass(this, History.class);
         intent.putExtra("Dice", move);
         startActivity(intent);
+
     }
 
     private void randomDice()
